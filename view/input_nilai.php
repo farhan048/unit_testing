@@ -31,21 +31,23 @@
             <div class="form-row">
                 <div class="col-md-3">
                     <label for="nilai">Masukan Nilai</label>
-                    <input type="number" name="nilai" class="form-control" placeholder="Masukan Nilai">
+                    <input type="number" id="nilai" name="nilai" class="form-control" placeholder="Masukan Nilai" autofocus>
                 </div>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary" id="input" name="input">Input</button>
+            <?php
+            require("../controller/KonversiController.php");
+
+            if (isset($_POST['input'])) {
+                $grd = new KonversiController();
+                echo $grd->insertNilai();
+            }
+            ?>
+            <a href='../index.php' class="btn btn-primary">Kembali</a>
+            <button type="submit" class="btn btn-success" id="input" name="input">Input</button>
+            <br>
         </form>
     </div>
-    <?php
-    require("../controller/KonversiController.php");
-
-    if (isset($_POST['input'])) {
-        $grd = new KonversiController();
-        echo $grd->insertNilai();
-    }
-    ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
